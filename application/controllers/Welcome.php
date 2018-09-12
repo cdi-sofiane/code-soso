@@ -7,13 +7,13 @@ class Welcome extends CI_Controller {
         parent::__construct();
 
         $this->load->helper(array('form', 'url', 'file'));
-        $this->load->model('Utilisateur');
+//        $this->load->model('Utilisateur');
         $this->load->library('session');
     }
 	public function index()
 	{
             $this->load->model('Utilisateur');
-            $utilisateur = new Utilisateur();
+            $utilisateur = new Utilisateur('azer@aze','pass');
             $this->se_new_user($utilisateur);
            $util= $utilisateur->get_utilisateur();
             

@@ -20,13 +20,13 @@ class Utilisateur extends CI_Model {
     public $password ;
     public $tel;
    
-    public function __construct(/*nom $nom,prenom $prenom,*/$paddr_mail,$ppassword/*,tel $tel*/) {
+    public function __construct() {
         parent::__construct();
         
 //        $this->nom = $nom;
 //        $this->prenom = $prenom;
-        $this->addr_mail = $paddr_mail;
-        $this->password = $ppassword;
+//        $this->addr_mail = $addr_mail;
+//        $this->password = $password;
 //        $this->tel = $tel;
 //        var_dump($prenom);
        
@@ -75,7 +75,7 @@ class Utilisateur extends CI_Model {
     }
     public  function set_name_utilisateur(){
        
-        var_dump($this);
+//        var_dump($this);
         $this->db->insert('utilisateur',$this);
     }
     //put your code here
