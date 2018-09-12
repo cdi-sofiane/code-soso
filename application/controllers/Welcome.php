@@ -14,15 +14,18 @@ class Welcome extends CI_Controller {
 	{
             $this->load->model('Utilisateur');
             $utilisateur = new Utilisateur();
-            $util=$this->se_new_user($utilisateur);
-            $utilisateur->get_utilisateur();
+            $this->se_new_user($utilisateur);
+           $util= $utilisateur->get_utilisateur();
             
 		$this->load->view('welcome_message',array($utilisateur,$util));
 	}
         
         public function se_new_user(){
             
-          $setUser =new Utilisateur();
-          $setUser->set_name_utilisateur('jack', 'soso', '18@zaz', '$password','132548596','2');
+          $setUser =new Utilisateur('azer@aze','pass');
+          $setUser->setNom('$nom');
+          $setUser->setPrenom('$prenom');
+          $setUser->setTel('0651311311');
+          $setUser->set_name_utilisateur();
         }
 }

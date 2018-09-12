@@ -13,35 +13,70 @@
  */
 class Utilisateur extends CI_Model {
     
-    public $id;
-    public $nom='nom';
-    public $prenom='prenom';
-    public $addr_mail='addr_mail';
-    public $password ='password';
-    public $numero_telephone='tel';
-    public $_fk_projet_id='id_projet';
-    
-    public function __construct() {
+    private $id;
+    public $nom;
+    public $prenom;
+    public $addr_mail;
+    public $password ;
+    public $tel;
+   
+    public function __construct(/*nom $nom,prenom $prenom,*/$paddr_mail,$ppassword/*,tel $tel*/) {
         parent::__construct();
         
-
+//        $this->nom = $nom;
+//        $this->prenom = $prenom;
+        $this->addr_mail = $paddr_mail;
+        $this->password = $ppassword;
+//        $this->tel = $tel;
+//        var_dump($prenom);
+       
         
         
     }
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getNom() {
+        return $this->nom;
+    }
+
+    public function getPrenom() {
+        return $this->prenom;
+    }
+
+    public function getTel() {
+        return $this->tel;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    public function setPrenom($prenom) {
+        $this->prenom = $prenom;
+    }
+
+    public function setTel($tel) {
+        $this->tel = $tel;
+    }
+
     
-  
+      
 
     public function get_utilisateur(){
-        return $this->db->query('select * from utilisateur')->result();
-         
+        $query= $this->db->query('select * from utilisateur')->result();
+         return $query;
 //        print_r($query).die();
     }
-    public  function set_name_utilisateur($nom, $prenom, $addr_mail, $password, $numero_telephone, $_fk_projet_id){
-//       $set_user= self::$id;$password;$numero_telephone;$_fk_projet_id;
-        
-        $set_user= array($nom, $prenom, $addr_mail, $password, $numero_telephone, $_fk_projet_id);
-        print_r($set_user).die();
-        $this->db->insert('utilisateur',$set_user);
+    public  function set_name_utilisateur(){
+       
+        var_dump($this);
+        $this->db->insert('utilisateur',$this);
     }
     //put your code here
 }
