@@ -70,7 +70,7 @@ class Utilisateur extends CI_Model {
 
     public function get_utilisateur(){
         $query= $this->db->query('select * from utilisateur where id="'.$this->id.'"')->result();
-         echo($query).die();
+//        
          return $query;
 //       
     }
