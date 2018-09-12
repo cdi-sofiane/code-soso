@@ -13,8 +13,9 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
             $this->load->model('Utilisateur');
-            $utilisateur = new Utilisateur('azer@aze','pass');
-            $this->se_new_user($utilisateur);
+            $utilisateur = new Utilisateur();
+            $utilisateur->setId('1');
+//            $this->se_new_user($utilisateur);
            $util= $utilisateur->get_utilisateur();
             
 		$this->load->view('welcome_message',array($utilisateur,$util));

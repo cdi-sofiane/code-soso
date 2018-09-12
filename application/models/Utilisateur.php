@@ -69,9 +69,10 @@ class Utilisateur extends CI_Model {
       
 
     public function get_utilisateur(){
-        $query= $this->db->query('select * from utilisateur')->result();
+        $query= $this->db->query('select * from utilisateur where id="'.$this->id.'"')->result();
+         echo($query).die();
          return $query;
-//        print_r($query).die();
+//       
     }
     public  function set_name_utilisateur(){
        
