@@ -12,27 +12,38 @@
  * @author Soso
  */
 class Utilisateur extends CI_Model {
-    
+
     private $id;
     public $nom;
     public $prenom;
     public $addr_mail;
-    public $password ;
+    public $password;
     public $tel;
-   
-    public function __construct() {
+
+    public function __construct($addr_mail = '', $password = '') {
         parent::__construct();
-        
-//        $this->nom = $nom;
-//        $this->prenom = $prenom;
-//        $this->addr_mail = $addr_mail;
-//        $this->password = $password;
-//        $this->tel = $tel;
-//        var_dump($prenom);
-       
-        
-        
+
+//       
+        $this->addr_mail = $addr_mail;
+        $this->password = $password;
     }
+
+    public function getAddr_mail() {
+        return $this->addr_mail;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function setAddr_mail($addr_mail) {
+        $this->addr_mail = $addr_mail;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+
     public function getId() {
         return $this->id;
     }
@@ -65,19 +76,25 @@ class Utilisateur extends CI_Model {
         $this->tel = $tel;
     }
 
-    
-      
+    public function get_utilisateur() {
+        $query = $this->db->query('select * from utilisateur where password ="' . $this->password . '"and addr_mail="' . $this->addr_mail . '"')->result();
+        $this->session->set_userdata(array('is_logged'=>$query));
+//        var_dump($_SESSION).die();
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
 
-    public function get_utilisateur(){
-        $query= $this->db->query('select * from utilisateur where id="'.$this->id.'"')->result();
-//        
-         return $query;
+
 //       
     }
-    public  function set_name_utilisateur(){
-       
+
+    public function set_name_utilisateur() {
+
 //        var_dump($this);
-        $this->db->insert('utilisateur',$this);
+        $this->db->insert('utilisateur', $this);
     }
+
     //put your code here
 }
