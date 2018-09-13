@@ -9,7 +9,7 @@
 /**
  * Description of Accueil
  *
- * @author Sekio
+ * @author soso
  */
 class Accueil extends CI_Controller{
     //put your code here
