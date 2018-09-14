@@ -9,7 +9,7 @@
 /**
  * Description of Inscription
  *
- * @author Sekio
+ * @author soso
  */
 class Inscription extends CI_Controller {
 
@@ -24,25 +24,26 @@ class Inscription extends CI_Controller {
 
     public function ajaxval() {
         $mail = $this->input->post('mail');
-        echo print_r($mail);
+        echo $mail;
     }
-public function create_new(){
-//    var_dump($_POST).die();
-}
 
-public function verification_mail() {
+    public function create_new() {
+//    var_dump($_POST).die();
+    }
+
+    public function verification_mail() {
         $this->load->model('Utilisateur');
         $mail = $this->input->post('mail');
         $pass = '';
 //        var_dump($mail).die();
         $user_verif = new Utilisateur($mail, $pass);
         $info = $user_verif->getAddrmail();
-        if ($info != null) {
+        if ($info == null) {
             $data['ind'] = 'green';
-            echo json_encode($data);
+            echo json_encode($data['ind']);
         } else {
             $data['ind'] = 'red';
-            echo json_encode($data);
+            echo json_encode($data['ind']);
         }
     }
 
