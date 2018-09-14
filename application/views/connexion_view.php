@@ -10,8 +10,8 @@ and open the template in the editor.
         /*width: 200px;*/
         background-image: url("http://localhost:8000/upload/realiz3d.jpg");
         background-repeat: no-repeat;
-        width: auto; /*or your image's width*/
-        height: auto; /*or your image's height*/
+        width: auto; 
+        height: auto; 
         margin: 0;
         padding: 0;
 
