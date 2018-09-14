@@ -7,10 +7,11 @@ if (!defined('BASEPATH'))
 
 if (!function_exists('check_login')) {
 
-    function check_login() {
+    function check_login($session) {
         $CI = & get_instance();
         $CI->load->helper('url');
-        if (!$CI->session->userdata('is_logged')) {
+        if (!$session) {
+            session_destroy();
             redirect('connexion');
         }
     }

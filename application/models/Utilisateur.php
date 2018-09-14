@@ -78,21 +78,30 @@ class Utilisateur extends CI_Model {
 
     public function get_utilisateur() {
         $query = $this->db->query('select * from utilisateur where password ="' . $this->password . '"and addr_mail="' . $this->addr_mail . '"')->result();
-        $this->session->set_userdata(array('is_logged'=>$query));
-//        var_dump($_SESSION).die();
+        $this->session->set_userdata(array('is_logged' => $query));
         if ($query) {
             return true;
         } else {
             return false;
         }
+    }
 
+    public function getAddrmail() {
+        $query = $this->db->query('select addr_mail from utilisateur where addr_mail="' . $this->addr_mail . '"')->result();
 
-//       
+        foreach ($query as $raw) {
+            $raw->addr_mail;
+            if ($raw->addr_mail) {
+                return $raw->addr_mail;
+            } else {
+                return null;
+            }
+        }
+//        return $info;
     }
 
     public function set_name_utilisateur() {
 
-//        var_dump($this);
         $this->db->insert('utilisateur', $this);
     }
 

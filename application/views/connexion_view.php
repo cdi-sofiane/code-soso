@@ -4,16 +4,50 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<style>
+    .image{
+        position: absolute;
+        /*width: 200px;*/
+        background-image: url("http://localhost:8000/upload/realiz3d.jpg");
+        background-repeat: no-repeat;
+        width: auto; /*or your image's width*/
+        height: auto; /*or your image's height*/
+        margin: 0;
+        padding: 0;
+
+    }
+    .login_form input{
+        position: relative;
+        inline-box-align: inherit;
+        margin:10px 0px 10px 0px; 
+        padding: 10px;
+    }
+    .login_form div{
+
+    }
+    input:-webkit-autofill{
+        background-color: whitesmoke !important;
+    }
+
+
+</style>
 <form method="post" accept-charset="utf-8" action="connexion/login">
-    <div style=" position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);"class="login_form">
+    <fieldset style="   position: fixed;padding:150px; top: 50%;left: 50%;transform: translate(-50%, -50%);">
 
+        <div class="login_form">
 
-        <div><input name="email" type="text" value=""></div>
-        <div><input name="password" type="password" value=""/></div>
-        <button >Login</button>
-        
-    </div>
+            <div>
+
+                <input name="email" type="email" value=""/>
+                <input name="password" type="password" value=""/>
+                <input type="submit" value="Login"/>
+
+            </div>
+
+        </div>
+    </fieldset>
 </form>
+</body>
 <?php
 // put your code here
 ?>
