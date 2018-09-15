@@ -51,31 +51,31 @@
 </div >
 <main class="main">
     <?php
-    echo form_open('inscription/create_new');
+    echo form_open('inscription/validation_formulair_inscription');
     echo'<div class="line">';
     echo '<div >' . form_label('Nom', 'to') . '</div>';
-    echo form_input(array('name' => 'nom', 'placeholder' => 'nom'), '');
+    echo form_input(array('name' => 'nom', 'placeholder' => 'nom','value'=>''));
     echo'</div>';
 
     echo'<div class="line">';
     echo form_label('prenom') . '</span>';
-    echo form_input('from', '');
+    echo form_input(array('name' => 'prenom', 'placeholder' => 'prenom','value'=>''));
     echo'</div>';
 
     echo'<div class="line">';
     echo form_label('mail');
-    $data['mail'] = array('class' => "email", 'id' => 'addr', 'name' => 'addr_mail');
+    $data['mail'] = array('class' => "email", 'id' => 'addr', 'name' => 'addr_mail','value'=>'');
     echo form_input($data['mail']);
     echo'</div>';
 
     echo'<div class="line">';
-    $data['pwd_1'] = array('type' => 'password', 'class' => "password", 'id' => 'pwd_1', 'name' => 'password1');
+    $data['pwd_1'] = array('type' => 'password', 'class' => "password", 'id' => 'pwd_1', 'name' => 'password1','value'=>'');
     echo form_label('password');
     echo form_input($data['pwd_1']);
     echo'</div>';
 
     echo'<div class="line">';
-    $data['pwd_2'] = array('type' => 'password', 'class' => "password", 'id' => 'pwd_2', 'name' => 'password2');
+    $data['pwd_2'] = array('type' => 'password', 'class' => "password", 'id' => 'pwd_2', 'name' => 'password2','value'=>'');
     echo form_label('password 2');
     echo form_input($data['pwd_2']);
     echo'</div>';

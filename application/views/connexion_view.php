@@ -47,6 +47,7 @@ and open the template in the editor.
         </div>
     </fieldset>
 </form>
+<div class="error">', '</div>
 </body>
 <?php
 // put your code here

@@ -21,8 +21,8 @@ class Connexion extends CI_Controller {
 
     public function login() {
 
-        $addr_mail = $_POST['email'];
-        $password = $_POST['password'];
+        $addr_mail = $this->input->post('email');
+        $password = $this->input->post('password');
 
 //            var_dump($addr_mail).die();
         $utilisateur = new Utilisateur($addr_mail, $password);
@@ -38,15 +38,6 @@ class Connexion extends CI_Controller {
 
     public function inscription() {
         redirect('inscription/create');
-    }
-
-    public function se_new_user() {
-
-        $setUser = new Utilisateur('azer@aze', 'pass');
-        $setUser->setNom('$nom');
-        $setUser->setPrenom('$prenom');
-        $setUser->setTel('0651311311');
-        $setUser->set_name_utilisateur();
     }
 
 }
