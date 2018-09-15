@@ -26,7 +26,7 @@ class Accueil extends CI_Controller{
        $session= $this->session->is_logged;
 //     $_SESSION['is_logged']).die();
         check_login($session);
-       
+        
         $this->load->view('accueil_view');
         
     }

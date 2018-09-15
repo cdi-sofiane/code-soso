@@ -9,7 +9,7 @@
 /**
  * Description of Ressource
  *
- * @author Sekio
+ * @author soso
  */
 class Ressource extends Projet {
 
