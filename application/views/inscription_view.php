@@ -1,7 +1,7 @@
 
 <script src="../../assets/jquery/jquery.min.js"></script>
 <style>
-    .sidenav {
+/*    .sidenav {
         height: 100%;
         width: 200px;
         position: fixed;
@@ -15,8 +15,8 @@
     .main {
         position:initial;
         border:300px;
-        margin: 10% ; /* Same as the width of the sidenav */
-        font-size: 28px; /* Increased text to enable scrolling */
+        margin: 10% ;  Same as the width of the sidenav 
+        font-size: 28px;  Increased text to enable scrolling 
         padding: 0px 10px;
     }
     input {
@@ -40,7 +40,7 @@
     }
     .line{
         display:inline-flex;
-    }
+    }*/
 </style>
 
 <div class="sidenav">
@@ -69,13 +69,13 @@
     echo'</div>';
 
     echo'<div class="line">';
-    $data['pwd_1'] = array('type' => 'password', 'class' => "password", 'id' => 'pwd_1', 'name' => 'password1','value'=>'');
+    $data['pwd_1'] = array('type' => 'password', 'class' => "password", 'id' => 'pwd_1', 'name' => 'password1',);
     echo form_label('password');
     echo form_input($data['pwd_1']);
     echo'</div>';
 
     echo'<div class="line">';
-    $data['pwd_2'] = array('type' => 'password', 'class' => "password", 'id' => 'pwd_2', 'name' => 'password2','value'=>'');
+    $data['pwd_2'] = array('type' => 'password', 'class' => "password", 'id' => 'pwd_2', 'name' => 'password2',);
     echo form_label('password 2');
     echo form_input($data['pwd_2']);
     echo'</div>';

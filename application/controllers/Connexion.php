@@ -8,11 +8,13 @@ class Connexion extends CI_Controller {
         parent::__construct();
 
         $this->load->helper(array('form', 'url', 'file'));
+        $this->load->library('session');
+//        $this->session->sess_destroy();
         $this->load->library('form_validation');
         $this->load->model('Utilisateur');
         $this->load->view('header_view');
         $this->load->view('connexion_view');
-        $this->load->library('session');
+        
     }
 
     public function index() {

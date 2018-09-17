@@ -8,12 +8,59 @@ and open the template in the editor.
     Author     : Soso
 */
 
-.head{
-  position:relative;margin:0;height: 100px;width:100%;background-color: #1E1E1E;  
+
+#head_container{
+    display: flex;
+    justify-content: flex-end;
+    height: 100px;
+    background-color: cadetblue;
 }
-.inscription_form{
-    position: absolute;right: 0;bottom: 0; margin-right: 10px;
+.index_header{
+    align-self: flex-end;
+    width: 200px;
+    padding-right: 15px;
+
 }
-.label-danger{
-    width: 200px !important;
+.submit_btn{
+    background-color: #FCD64F;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 30px;
+    font: 700 20px/30px 'PT Sans','Trebuchet MS',Arial,sans-serif;
+
+
+}
+.input_content{
+
+    height: 200px;
+    width: fit-content;
+}
+
+.main_container {
+    display: flex; /* or inline-flex */
+    justify-content: center;
+    height:-webkit-fill-available;
+    background-color: currentColor;
+    flex-wrap: wrap;
+}
+body{
+      overflow:hidden;
+    /*height:-webkit-fill-available;*/
+}
+#element{
+    display: inline-table;
+
+    padding-top: 200px;
+    /*padding-bottom: 200%;*/
+    /*display: block;*/
+}
+
+.footer{
+    display: flex;
+    /*width: 100%;*/
 }

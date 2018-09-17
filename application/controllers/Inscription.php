@@ -15,6 +15,8 @@ class Inscription extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+
+        $this->load->model('Utilisateur');
     }
 
     public function create() {
@@ -29,9 +31,9 @@ class Inscription extends CI_Controller {
 
     public function create_new() {
 
-        validation_formulair_inscription();
 
-//    var_dump($_POST).die();
+
+//        var_dump($new_user) . die();
     }
 
     public function verification_mail() {
@@ -52,15 +54,23 @@ class Inscription extends CI_Controller {
 
     public function validation_formulair_inscription() {
 //        var_dump($_POST).die();
-        $this->form_validation->set_rules('nom', 'nom', 'required');
-       $this->form_validation->set_rules('prenom', 'prenom', 'required');
-     
+        $this->form_validation->set_rules('nom', 'nom');
+        $this->form_validation->set_rules('prenom', 'prenom');
+
         $this->form_validation->set_rules('addr_mail', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('password1', 'Password', 'required');
         $this->form_validation->set_rules('password2', 'Password Confirmation', 'required|matches[password1]');
-        
-        
+
+
         if ($this->form_validation->run() == true) {
+            $mail = $this->input->post('addr_mail');
+            $pass = $this->input->post('password2');
+            $new_user = new Utilisateur($mail, $pass);
+            $new_user->setNom($this->input->post('nom'));
+            $new_user->setPrenom($this->input->post('prenom'));
+            $new_user->setTel($this->input->post('tel'));
+            $new_user->set_new_utilisateur();
+            
             redirect('inscription/create');
         } else {
             $this->form_validation->set_error_delimiters('<div class="error">', '</div>');

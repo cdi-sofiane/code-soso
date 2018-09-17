@@ -100,8 +100,8 @@ class Utilisateur extends CI_Model {
 //        return $info;
     }
 
-    public function set_name_utilisateur() {
-
+    public function set_new_utilisateur() {
+//        var_dump($this).die();
         $this->db->insert('utilisateur', $this);
     }
 

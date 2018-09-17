@@ -11,7 +11,7 @@
  *
  * @author soso
  */
-class Ressource extends Projet {
+class Ressource extends CI_Model {
 
     private $id;
     public $fk_id_projet;
