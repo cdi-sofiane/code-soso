@@ -159,7 +159,7 @@ and open the template in the editor.
                     data: {id_repertoir: id_repertoir},
                     asynch: true,
                     success: function (data) {
- window.location.href = data.redirect;
+                        window.location.href = data.redirect;
                         console.log(data);
                     },
                     error: function (data) {
