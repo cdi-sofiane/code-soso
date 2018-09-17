@@ -1,4 +1,4 @@
-
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <main class="main_container">
 
     <div id="element">
@@ -13,7 +13,7 @@
                 <input name="password" type="password" value=""/>
                 <div ><button class="submit_btn" value="Login"/>Login</div>
 
-                </div>
+            </div>
 
 
 
@@ -21,7 +21,7 @@
     </div>
 </main>
 <footer class="footer">
-    toto
+
 </footer>
 </body>
 

@@ -13,27 +13,27 @@
  */
 class Ressource extends CI_Model {
 
-    private $id;
-    public $fk_id_projet;
+    private $idressources;
+    public $projet_id;
     public $nom;
     public $url;
     public $taille;
     public $format;
     public $ext;
 
-    public function __construct($addr_mail = '', $password = '', $fk_id_utilisateur = '', $createur = '',$url='',$ext='') {
+    public function __construct($url = '', $ext = '') {
         parent::__construct($addr_mail, $password, $fk_id_utilisateur, $createur);
-        
-        $this->url=$url;
-        $this->ext=$ext;
-    }
-    
-    public function getId() {
-        return $this->id;
+
+        $this->url = $url;
+        $this->ext = $ext;
     }
 
-    public function getFk_id_projet() {
-        return $this->fk_id_projet;
+    public function getIdressources() {
+        return $this->idressources;
+    }
+
+    public function getProjet_id() {
+        return $this->projet_id;
     }
 
     public function getNom() {
@@ -56,12 +56,12 @@ class Ressource extends CI_Model {
         return $this->ext;
     }
 
-    public function setId($id) {
-        $this->id = $id;
+    public function setIdressources($idressources) {
+        $this->idressources = $idressources;
     }
 
-    public function setFk_id_projet($fk_id_projet) {
-        $this->fk_id_projet = $fk_id_projet;
+    public function setProjet_id($projet_id) {
+        $this->projet_id = $projet_id;
     }
 
     public function setNom($nom) {
@@ -84,5 +84,4 @@ class Ressource extends CI_Model {
         $this->ext = $ext;
     }
 
-        //put your code here
 }

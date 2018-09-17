@@ -113,7 +113,7 @@ and open the template in the editor.
 
             <?php
             $id_user = json_encode($is_logged->id);
-//                    var_dump($projet).die();          
+
             foreach ($projet as $value) {
                 if ($value->utilisateur_id != $is_logged->id) {
                     echo' <div data-id="' . $value->utilisateur_id . '" class="projet" id="' . $value->id . '">';
@@ -149,28 +149,27 @@ and open the template in the editor.
 
                 },
             });
-              $('.projet').on('click', function () {
-            var id_repertoir = $(this).attr('id');
-            
-//            alert(id_repertoir);
-            $.ajax({
-                type: 'POST',
-                url: '../dossier/projet_selectionner',
-                dataType: "json",
-                data: {id_repertoir: id_repertoir},
-                asynch: true,
-                success: function (data) {
-                 
-                    console.log(data);
-                },
-                error: function (data) {
+            $('.projet').on('click', function () {
+                var id_repertoir = $(this).attr('id');
 
-                },
-            })
-        });
+                $.ajax({
+                    type: 'POST',
+                    url: 'check_ressources',
+                    dataType: "json",
+                    data: {id_repertoir: id_repertoir},
+                    asynch: true,
+                    success: function (data) {
+ window.location.href = data.redirect;
+                        console.log(data);
+                    },
+                    error: function (data) {
+
+                    },
+                })
+            });
         });
 
-      
+
         $(".form_hidden").on('click', function () {
             var display_val = $(".new_projet").css('display');
             console.log(display_val);
@@ -199,7 +198,7 @@ and open the template in the editor.
                         console.log(data);
                         $(".bloc_folder").empty();
                         $.each(data, function (i, item) {
-//                            alert(i +' '+ item.utilisateur_id);
+
 
                             if (item.utilisateur_id === <?= $id_user; ?>) {
 

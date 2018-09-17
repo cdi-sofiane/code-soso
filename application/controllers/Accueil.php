@@ -51,8 +51,15 @@ class Accueil extends CI_Controller {
 
         echo json_encode($projet->get_all_projet());
     }
-    public function check_ressources(){
-        redirect('dossier/projet_selectionner');
+
+    public function check_ressources() {
+        $folder=$this->input->post('id_repertoir');
+//        var_dump($folder).die();
+        $response['redirect'] = base_url() . 'dossier/projet_selectionner/'.$folder.'';
+        echo json_encode($response);
+//        die;
+//        var_dump($response).die();
+//        redirect('dossier/projet_selectionner');
     }
 
 }

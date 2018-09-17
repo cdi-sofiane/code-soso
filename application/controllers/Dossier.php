@@ -21,7 +21,7 @@ class Dossier extends CI_Controller {
     }
 
     public function projet_selectionner() {
-        redirect('../dossier','refresh');
+//        redirect('../dossier','refresh');
 //        var_dump($_POST) . die();
     }
 

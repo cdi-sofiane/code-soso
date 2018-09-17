@@ -9,7 +9,7 @@ class Connexion extends CI_Controller {
 
         $this->load->helper(array('form', 'url', 'file'));
         $this->load->library('session');
-//        $this->session->sess_destroy();
+        
         $this->load->library('form_validation');
         $this->load->model('Utilisateur');
         $this->load->view('header_view');
@@ -26,10 +26,10 @@ class Connexion extends CI_Controller {
         $addr_mail = $this->input->post('email');
         $password = $this->input->post('password');
 
-//            var_dump($addr_mail).die();
+        
         $utilisateur = new Utilisateur($addr_mail, $password);
+        
         if ($utilisateur->get_utilisateur() == true) {
-//            check_login();
 
             redirect('accueil/bord');
         } else {
