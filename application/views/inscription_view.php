@@ -5,46 +5,50 @@
 <link href="<?php echo base_url("./assets/login.css"); ?>"  rel="stylesheet"/>
 <style>
 
-    /*    .sidenav {
-            height: 100%;
-            width: 200px;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: auto;
-            padding-top: 20px;
-        }
-*/        .main {
-            display: flex;
-            border:300px;
-            margin: 20% ;  
-            font-size: 28px;  
-            padding: 0px 10px;
-        }
-/*        input {
-    
-            display: block;
-        }
-        .return{
-            top:100px;
-            position:relative;
-            font-family: cursive;
-            font-style: normal;
-            color: #ffffff;
-            border-bottom: #f0f0f0;
-            border-bottom-style: solid;
-            border-top-style: solid;
-        }
-        a {
-            padding-left: 30px;
-            color: #ffffff;
-            text-decoration: inherit;
-        }
-        .line{
-            display:inline-flex;*/
-        /*}*/
+    .sidenav {
+        height: 100%;
+        width: 200px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: auto;
+        padding-top: 20px;
+    }
+    .main {
+        display: flex;
+        border:300px;
+        margin: 20% ;  
+        font-size: 28px;  
+        padding: 0px 10px;
+    }
+    .form_insc{
+        float: left;
+        padding: 15%;
+    }
+    /*        input {
+        
+                display: block;
+            }
+            .return{
+                top:100px;
+                position:relative;
+                font-family: cursive;
+                font-style: normal;
+                color: #ffffff;
+                border-bottom: #f0f0f0;
+                border-bottom-style: solid;
+                border-top-style: solid;
+            }
+            a {
+                padding-left: 30px;
+                color: #ffffff;
+                text-decoration: inherit;
+            }
+            .line{
+                display:inline-flex;*/
+    /*}*/
 </style>
 
 <div class="sidenav">
@@ -53,7 +57,7 @@
     // put your code here
     ?>
 </div >
-<main class="main">
+<main class="form_insc">
     <?php
     echo form_open('inscription/validation_formulair_inscription');
     echo'<div class="element">';
@@ -97,7 +101,6 @@
 
 </main>
 <script type="text/javascript">
-//        $('document').ready(function(){
     $(".email").on('change', function () {
         var val = $(this).val();
         $.ajax({
@@ -131,7 +134,6 @@
         }
         console.log(pwd_1);
     });
-//        });
 
 
 
