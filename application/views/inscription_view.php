@@ -90,7 +90,9 @@
 
     echo'<div class="element">';
     echo form_label('capchat');
-    echo form_input();
+    print $cap['image'];
+//    echo $word;
+    
     echo'</div>';
 
     echo form_submit('inscription', 'inscription');

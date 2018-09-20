@@ -102,4 +102,11 @@ class Ressources extends CI_Model {
         $this->db->insert('ressources_has_projet',array('ressources_idressources'=>$id_ressources,'projet_id'=>$id_projet));
         echo var_dump($id_ressources).die();
     }
+    
+    public function find_all_file_in_project($id_projet) {
+//        var_dump($id_projet).die();
+      $query=$this->db->query("select * from ressources where idressources in(select ressources_idressources from ressources_has_projet where projet_id=$id_projet)")->result();
+      return $query;
+        
+    }
 }

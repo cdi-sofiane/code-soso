@@ -99,7 +99,7 @@ and open the template in the editor.
                 border-style: dotted;
                 border: 0;
                 text-align: left;
-              
+
             }
             .select_folder{
                 text-align: left;
@@ -124,7 +124,7 @@ and open the template in the editor.
                 width:300px;
             }
             .block_projet{
-                  overflow-y: scroll;
+                overflow-y: scroll;
                 height: 100px;
             }
         </style>
@@ -164,7 +164,7 @@ and open the template in the editor.
 
 
                         <?php
-                        echo form_open_multipart('accueil/upload', 'post');
+                        echo form_open_multipart(base_url().'accueil/upload', 'post');
                         echo form_input(array('type' => 'hidden', 'name' => 'user_id', 'id' => $is_logged->id));
                         echo form_input(array('type' => 'hidden', 'name' => 'user_name', 'id' => $is_logged->nom));
 
@@ -276,10 +276,7 @@ and open the template in the editor.
         });
         $('.checkbox').on('change', function () {
             var chk_id = $(this).next().attr('id');
-//            alert(chk_id);
-//            $('#chk_id').css('display','block');
             var display_val = $(this).next().css('display');
-//            alert(display_val);
             if (display_val === 'none') {
                 $("#" + chk_id).css('display', 'block');
             } else {
@@ -309,8 +306,9 @@ and open the template in the editor.
                     data: {id_repertoir: id_repertoir},
                     asynch: true,
                     success: function (data) {
+//                        
                         window.location.href = data.redirect;
-                        console.log(data);
+                       
                     },
                     error: function (data) {
 

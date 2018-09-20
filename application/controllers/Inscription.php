@@ -17,10 +17,19 @@ class Inscription extends CI_Controller {
         parent::__construct();
 
         $this->load->model('Utilisateur');
+        $this->load->library('image_lib');
+        $this->load->helper('captcha');
     }
 
     public function create() {
-        $this->load->view('inscription_view');
+        $data = array('img_path' => 'cap/',
+            'img_url' => base_url() . 'upload/cap/',
+            'img_width' => '150',
+            'img_heigh' => '50',
+        );
+        $captcha= create_captcha($data);
+        var_dump($captcha).die();
+        $this->load->view('inscription_view', $captcha);
     }
 
     public function ajaxval() {

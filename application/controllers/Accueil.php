@@ -56,10 +56,13 @@ class Accueil extends CI_Controller {
     }
 
     public function check_ressources() {
+
         $folder = $this->input->post('id_repertoir');
+
+//        
+//        $this->load->view(base_url() .'dossier/projet_selectionner',$folder);
         $response['redirect'] = base_url() . 'dossier/projet_selectionner/' . $folder . '';
         echo json_encode($response);
-
     }
 
     public function upload() {
@@ -75,6 +78,7 @@ class Accueil extends CI_Controller {
         $fileErrorMsg = $_FILES["file_name"]["error"];
         $target_path = './upload/ressources/' . basename($fileName);
         $target_file_path = './upload/ressources/';
+//		var_dump($fileName).die();
 //        
 //        $data['message'] = $this->session->set_flashdata('message', "Le fichier [" . $fileName . "] a été enregistré avec succès !");
         $ressources = new Ressources($target_file_path, $ext[1]);
@@ -84,13 +88,15 @@ class Accueil extends CI_Controller {
         if ($ressources->file_exist()) {
             $moveResult = move_uploaded_file($fileTmpLoc, $target_path);
             $data['file'] = get_dir_file_info('./upload/ressources/', 'name');
-            $ressources->upload_file();
-            
-            redirect('accueil/bord');
+            if ($fileName !== "") {
+                $ressources->upload_file();
+                redirect('accueil/bord');
+            } else {
+                redirect('accueil/bord');
+            }
         } else {
-            redirect('dossier/projet_selectionner');
+            redirect('accueil/bord');
         }
-
     }
 
 }

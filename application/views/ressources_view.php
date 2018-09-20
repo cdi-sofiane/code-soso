@@ -89,7 +89,7 @@ and open the template in the editor.
             <div class="block_side1">
                 <div class="element_side1">
 
-                    <div data-nav-side="nav_bord"  class="form_hidden">Creer Ressources</div>
+                    <!--<div data-nav-side="nav_bord"  class="form_hidden">Creer Ressources</div>-->
                     <div class="new_projet" style="display:none">
 
 
@@ -105,7 +105,7 @@ and open the template in the editor.
                     </div>
                 </div>
                 <div class="element_side2">
-                    <div data-nav-side="nav_bord" >Supprimer Ressources</div>
+                    <div data-nav-side="nav_bord" >Supprimer lien</div>
                 </div>
             </div>
             <div class="block_side2">
@@ -113,5 +113,44 @@ and open the template in the editor.
             </div>
         </div>
     </side>
-    <main>
+    <main style='padding-top:15%;padding-left: 15%;'>
+         <div class="ressources" style="overflow-y: scroll;"id="">
+
+
+
+                <?php
+//                echo '<pre>' . var_dump($projet) . '</pre>';
+                echo '<table>';
+                echo '<th>Nom</th>';
+                echo '<th>URL</th>';
+                echo '<th>Taille</th>';
+                echo '<th class="format_content">Format</th>';
+                echo '<th class="format_content">Ext</th>';
+                echo '<th class="format_content">Link</th>';
+                echo '<th class="format_content">Sup</th>';
+
+                foreach ($fichier as $key => $value) {
+                    echo '<tr>';
+                    echo '<td>' . $value->nom . '</td>';
+                    echo '<td>' . $value->url . '</td>';
+                    echo '<td>' . $value->taille . '</td>';
+                    echo '<td class="format_content">' . $value->format . '</td>';
+                    echo '<td>' . $value->ext . '</td>';
+                    echo '<td class="list_associer">' . $value->projet_id . '</td>';
+                    echo '<td class="checkbox">' . form_checkbox() . '</td>';
+                    echo '<td id="checkbox' . $value->idressources . '" class"select_folder" style="display:none"><input id="folder_choice' . $value->idressources . '"class ="folder_choice" placeholder="associer projet" />';
+                    echo'<div  class="block_projet" style="display:none;">';
+                    foreach ($projet as $key => $val) {
+                        echo '<div class="final_choice" style="border"><input class="linker" data-folder="' . $val->id . '" data-file="' . $value->idressources . '" id="final_choice' . $val->id . '" type="checkbox" /><a>' . $val->nom . '<a/><div>';
+                    }
+                    echo '</></td>';
+
+                    echo '</div>';
+                    echo '</tr>';
+                }
+                echo '</table>';
+                ?>
+
+            </div>
+    </main>
 </html>
