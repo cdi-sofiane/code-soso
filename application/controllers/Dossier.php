@@ -24,5 +24,13 @@ class Dossier extends CI_Controller {
         echo var_dump($_POST);
         $this->load->view('ressources_view');
     }
+    public function associer(){
+        $this->load->model('Ressources');
+       $id_ressources= $this->input->post('idressources');
+        $id_projet= $this->input->post('id');
+       $data['cool']=$this->Ressources->association_dossier_fichier($id_ressources,$id_projet);
+        
+       
+    }
 
 }

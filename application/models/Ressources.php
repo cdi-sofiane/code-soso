@@ -97,4 +97,9 @@ class Ressources extends CI_Model {
          $query=$this->db->select('*')->from('ressources')->get()->result();
          return $query;
     }
+    
+    public function association_dossier_fichier($id_ressources,$id_projet){
+        $this->db->insert('ressources_has_projet',array('ressources_idressources'=>$id_ressources,'projet_id'=>$id_projet));
+        echo var_dump($id_ressources).die();
+    }
 }

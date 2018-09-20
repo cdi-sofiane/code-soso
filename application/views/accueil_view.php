@@ -62,6 +62,10 @@ and open the template in the editor.
 
             }
             .projet{
+                text-align: center;
+                padding-left: 5px;
+                padding-right: 5px;
+                height: fit-content;
 
             }
             .bloc_folder{
@@ -88,6 +92,40 @@ and open the template in the editor.
             .ressources{
                 overflow-y: scroll;
                 border-top-style: groove;
+            }
+            .final_choice{
+                border: black;
+                background: darkseagreen;
+                border-style: dotted;
+                border: 0;
+                text-align: left;
+              
+            }
+            .select_folder{
+                text-align: left;
+
+            }
+            td{
+                width:300px;
+                text-align: right
+            }
+            td.checkbox{
+                width:3px !important;
+                text-align: left;
+            }
+            .list_associer{
+                width: fit-content;
+            }
+            .format_content {
+                width: fit-content;
+                text-align: right
+            }
+            th{
+                width:300px;
+            }
+            .block_projet{
+                  overflow-y: scroll;
+                height: 100px;
             }
         </style>
     <side >
@@ -152,12 +190,12 @@ and open the template in the editor.
                 foreach ($projet as $value) {
                     if ($value->utilisateur_id != $is_logged->id) {
                         echo' <div data-id="' . $value->utilisateur_id . '" class="projet" id="' . $value->id . '">';
-                        echo'<div><i class="material-icons" style="font-size:100px;color:red">folder_open</i></div>';
+                        echo'<div><i class="material-icons" style="text-align: center;font-size:100px;color:red">folder_open</i></div>';
                         echo $value->nom;
                         echo '</div>';
                     } else {
                         echo' <div data-id="' . $value->utilisateur_id . '" class="projet" id="' . $value->id . '">';
-                        echo'<div><i class="material-icons" style="font-size:100px;color:#84B85F">folder_open</i></div>';
+                        echo'<div><i class="material-icons" style="text-align: center;font-size:100px;color:#84B85F">folder_open</i></div>';
                         echo $value->nom;
                         echo '</div>';
                     }
@@ -169,21 +207,36 @@ and open the template in the editor.
 
 
                 <?php
-//                echo '<pre>'.  var_dump($file).'</pre>';
+//                echo '<pre>' . var_dump($projet) . '</pre>';
                 echo '<table>';
-                echo '<th>';
+                echo '<th>Nom</th>';
+                echo '<th>URL</th>';
+                echo '<th>Taille</th>';
+                echo '<th class="format_content">Format</th>';
+                echo '<th class="format_content">Ext</th>';
+                echo '<th class="format_content">Link</th>';
+                echo '<th class="format_content">Sup</th>';
+
                 foreach ($file as $key => $value) {
                     echo '<tr>';
                     echo '<td>' . $value->nom . '</td>';
                     echo '<td>' . $value->url . '</td>';
                     echo '<td>' . $value->taille . '</td>';
-                    echo '<td>' . $value->format . '</td>';
+                    echo '<td class="format_content">' . $value->format . '</td>';
                     echo '<td>' . $value->ext . '</td>';
-                    echo '<td>' . $value->projet_id . '</td>';
-                    echo '<td>' . form_checkbox() . '</td>';
+                    echo '<td class="list_associer">' . $value->projet_id . '</td>';
+                    echo '<td class="checkbox">' . form_checkbox() . '</td>';
+                    echo '<td id="checkbox' . $value->idressources . '" class"select_folder" style="display:none"><input id="folder_choice' . $value->idressources . '"class ="folder_choice" placeholder="associer projet" />';
+                    echo'<div  class="block_projet" style="display:none;">';
+                    foreach ($projet as $key => $val) {
+                        echo '<div class="final_choice" style="border"><input class="linker" data-folder="' . $val->id . '" data-file="' . $value->idressources . '" id="final_choice' . $val->id . '" type="checkbox" /><a>' . $val->nom . '<a/><div>';
+                    }
+                    echo '</></td>';
+
+                    echo '</div>';
                     echo '</tr>';
                 }
-                echo '</th></table>';
+                echo '</table>';
                 ?>
 
             </div>
@@ -192,6 +245,48 @@ and open the template in the editor.
 
 
     <script type="text/javascript">
+        $('.linker').on('change', function () {
+            var file = $(this).data('file');
+            var folder = $(this).data('folder');
+
+            alert(file + ',' + folder);
+            $.ajax({
+                type: 'POST',
+                url: '../dossier/associer',
+                dataType: 'json',
+                data: {idressources: file, id: folder},
+                asynch: true,
+                success: function (data) {
+                    console.log(data);
+                },
+            })
+        });
+
+
+        $('.folder_choice').bind('click keyup', function () {
+            var folder_choice_id = $(this).attr('id');
+//            alert(folder_choice_id);
+            var display_val = $(this).next().css('display');
+            if (display_val === 'none') {
+                $("#" + folder_choice_id).next().css('display', 'block');
+            } else {
+                $("#" + folder_choice_id).next().css('display', 'none');
+            }
+
+        });
+        $('.checkbox').on('change', function () {
+            var chk_id = $(this).next().attr('id');
+//            alert(chk_id);
+//            $('#chk_id').css('display','block');
+            var display_val = $(this).next().css('display');
+//            alert(display_val);
+            if (display_val === 'none') {
+                $("#" + chk_id).css('display', 'block');
+            } else {
+                $('.select_folder ,[id="' + chk_id + '"]').css('display', 'none');
+            }
+
+        });
         $(document).ready(function () {
             $.ajax({
                 type: 'POST',
@@ -278,13 +373,13 @@ and open the template in the editor.
                             if (item.utilisateur_id === <?= $id_user; ?>) {
 
                                 var repertoire = ' <div data-id="' + item.utilisateur_id + '" class="projet" id="' + item.id + '">\n\
-                                    <div><i class="material-icons" style="font-size:100px;color:#84B85F">folder_open</i></div>\n\
+                                    <div><i class="material-icons" style="text-align: center;font-size:100px;color:#84B85F">folder_open</i></div>\n\
                                     </div>';
                                 $(".bloc_folder").append(repertoire);
                             } else {
 
                                 var repertoire = ' <div data-id="' + item.utilisateur_id + '" class="projet" id="' + item.id + '">\n\
-                                    <div><i class="material-icons" style="font-size:100px;color:red">folder_open</i></div>\n\
+                                    <div><i class="material-icons" style="text-align: center;font-size:100px;color:red">folder_open</i></div>\n\
                                     </div>';
                                 $(".bloc_folder").append(repertoire);
                             }
@@ -301,7 +396,7 @@ and open the template in the editor.
         });
 
         function fail() {
-            alert('Il faut donner une titre au projet');
+            alert('Il faut donner une nom au projet');
 
         }
     </script>
