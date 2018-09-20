@@ -9,11 +9,12 @@ class Connexion extends CI_Controller {
 
         $this->load->helper(array('form', 'url', 'file'));
         $this->load->library('session');
-
+        
         $this->load->library('form_validation');
         $this->load->model('Utilisateur');
         $this->load->view('header_view');
         $this->load->view('connexion_view');
+        
     }
 
     public function index() {
@@ -25,9 +26,9 @@ class Connexion extends CI_Controller {
         $addr_mail = $this->input->post('email');
         $password = $this->input->post('password');
 
-
+        
         $utilisateur = new Utilisateur($addr_mail, $password);
-
+        
         if ($utilisateur->get_utilisateur() == true) {
 
             redirect('accueil/bord');

@@ -17,12 +17,13 @@ class Dossier extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('form', 'url', 'file', 'login'));
         $this->load->library('session');
+       $this->load->view('ressources_view');
     }
 
     public function projet_selectionner() {
-
-        echo var_dump($_POST);
-        $this->load->view('ressources_view');
+//        redirect('../dossier','refresh');
+//        var_dump($_POST) . die();
     }
 
+    //put your code here
 }

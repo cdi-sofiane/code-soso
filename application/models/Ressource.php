@@ -11,7 +11,7 @@
  *
  * @author soso
  */
-class Ressources extends CI_Model {
+class Ressource extends CI_Model {
 
     private $idressources;
     public $projet_id;
@@ -22,7 +22,7 @@ class Ressources extends CI_Model {
     public $ext;
 
     public function __construct($url = '', $ext = '') {
-        parent::__construct();
+        parent::__construct($addr_mail, $password, $fk_id_utilisateur, $createur);
 
         $this->url = $url;
         $this->ext = $ext;
@@ -83,18 +83,5 @@ class Ressources extends CI_Model {
     public function setExt($ext) {
         $this->ext = $ext;
     }
-    
-    public function upload_file() {
-//        var_dump($this).die();
-        $this->db->insert('Ressources',$this);
-    }
-     public function file_exist(){
-        $query=$this->db->select('*')->from('ressources')->where('nom',$this->getNom())->get()->result();
-        return $query !=null ? false : true;
-        
-    }
-    public function get_ressources() {
-         $query=$this->db->select('*')->from('ressources')->get()->result();
-         return $query;
-    }
+
 }
