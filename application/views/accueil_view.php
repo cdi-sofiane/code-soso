@@ -18,7 +18,7 @@ and open the template in the editor.
                 background-color: cadetblue;
                 display:flex;
                 width: 300px;
-                height:-webkit-fill-available;
+                height:auto;
 
                 /*flex-wrap: wrap;*/
 
@@ -26,20 +26,21 @@ and open the template in the editor.
 
             }
             main{
-                /*display:flex;*/
-                width:-webkit-fill-available;
-                background-color: #F0F8FF /*#333333*/;            }
+                width: 90%;
+                background-color: #F0F8FF /*#333333*/;         }
             body{
                 display: flex;
-                overflow: hidden;
-                margin:0;
-                padding:0;
+                overflow-y: scroll; 
+                margin: 0;
+                padding: 0;
+                /* flex-wrap: wrap; */
 
                 /*flex-wrap: wrap;*/
 
             }
             element_side1{
                 display: inline-grid;
+
             }
             element_side2{
                 padding-top: 30px;
@@ -64,75 +65,129 @@ and open the template in the editor.
 
             }
             .bloc_folder{
-                display:flex;
+                display: flex;
                 flex-wrap: wrap;
+                overflow-y: auto;
+                height: 300px;
+
             }
-            .side{
 
-
-
-                width: 100%;
-            }
             .material-icons {
                 cursor: zoom-in;
 
             }
-
+            .block_side1{
+                padding-top: 300px;
+                height: 100vh;
+                width: 100%;
+            }
+            .block_side0{
+                height: 100px;
+                width: 100%;
+            }
+            .ressources{
+                overflow-y: scroll;
+                border-top-style: groove;
+            }
         </style>
     <side >
         <div class="side">
-            <div class="element_side1">
+            <div class="block_side1">
 
-                <div data-nav-side="nav_bord"  class="form_hidden">Creer projet</div>
-                <div class="new_projet" style="display:none">
+                <div class="element_side1">
+
+                    <div data-nav-side="nav_bord"  id="projet">Creer projet</div>
+                    <div class="new_projet" style="display:none">
 
 
-                    <?php
-                    echo form_input(array('type' => 'hidden', 'name' => 'user_id', 'id' => $is_logged->id));
-                    echo form_input(array('type' => 'hidden', 'name' => 'user_name', 'id' => $is_logged->nom));
+                        <?php
+                        echo form_input(array('type' => 'hidden', 'name' => 'user_id', 'id' => $is_logged->id));
+                        echo form_input(array('type' => 'hidden', 'name' => 'user_name', 'id' => $is_logged->nom));
 
-                    echo form_input(array("placeholder" => 'Nom du Projet', 'name' => 'titre', 'value' => ''));
+                        echo form_input(array("placeholder" => 'Nom du Projet', 'name' => 'titre', 'value' => ''));
 //                    echo form_input(array('name' => 'fichier', 'value' => '', 'type' => 'file'));
-                    echo form_submit(array('id' => 'ajax_projet', 'class' => 'submit_btn', 'value' => 'New projet', 'type' => 'submit'));
-                    ?>
+                        echo form_submit(array('id' => 'ajax_projet', 'class' => 'submit_btn', 'value' => 'New projet', 'type' => 'submit'));
+                        ?>
+
+                    </div>
+
 
                 </div>
+                <div class="element_side2">
+
+                    <!--<div data-nav-side="nav_bord" >Supprimer projet</div>-->
 
 
-            </div>
-            <div class="element_side2">
+                </div>
+                <div class="element_side3">
 
-                <div data-nav-side="nav_bord" >Supprimer projet</div>
+                    <div data-nav-side="nav_bord" id="ressource" >Cree ressources</div>
+                    <div class="new_ressources" style="display:none">
 
 
+                        <?php
+                        echo form_open_multipart('accueil/upload', 'post');
+                        echo form_input(array('type' => 'hidden', 'name' => 'user_id', 'id' => $is_logged->id));
+                        echo form_input(array('type' => 'hidden', 'name' => 'user_name', 'id' => $is_logged->nom));
+
+                        echo form_input(array("placeholder" => 'Nom de la Ressource', 'name' => 'titre', 'value' => ''));
+                        echo form_input(array('name' => 'file_name', 'value' => '', 'type' => 'file'));
+                        echo form_submit(array('id' => 'ajax_ressources', 'class' => 'submit_btn', 'value' => 'New ressources', 'type' => 'submit'));
+                        echo form_close();
+                        ?>
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </side>
     <main>
-        <div class="bloc_folder">
+        <div class="bloc_gestion">
+            <div class="bloc_folder">
 
-            <?php
-            $id_user = json_encode($is_logged->id);
+                <?php
+                $id_user = json_encode($is_logged->id);
 
-            foreach ($projet as $value) {
-                if ($value->utilisateur_id != $is_logged->id) {
-                    echo' <div data-id="' . $value->utilisateur_id . '" class="projet" id="' . $value->id . '">';
-                    echo'<div><i class="material-icons" style="font-size:150px;color:red">folder_open</i></div>';
-                    echo $value->nom;
-                    echo '</div>';
-                } else {
-                    echo' <div data-id="' . $value->utilisateur_id . '" class="projet" id="' . $value->id . '">';
-                    echo'<div><i class="material-icons" style="font-size:150px;color:#84B85F">folder_open</i></div>';
-                    echo $value->nom;
-                    echo '</div>';
+                foreach ($projet as $value) {
+                    if ($value->utilisateur_id != $is_logged->id) {
+                        echo' <div data-id="' . $value->utilisateur_id . '" class="projet" id="' . $value->id . '">';
+                        echo'<div><i class="material-icons" style="font-size:100px;color:red">folder_open</i></div>';
+                        echo $value->nom;
+                        echo '</div>';
+                    } else {
+                        echo' <div data-id="' . $value->utilisateur_id . '" class="projet" id="' . $value->id . '">';
+                        echo'<div><i class="material-icons" style="font-size:100px;color:#84B85F">folder_open</i></div>';
+                        echo $value->nom;
+                        echo '</div>';
+                    }
                 }
-            }
-            ?>
-        </div>
-        <div class="Project" id="<?php /* id du projetc */ ?>">
-            <image>
-        </div>
+                ?>
+            </div>
+            <div class="ressources" style="overflow-y: scroll;"id="">
 
+
+
+                <?php
+//                echo '<pre>'.  var_dump($file).'</pre>';
+                echo '<table>';
+                echo '<th>';
+                foreach ($file as $key => $value) {
+                    echo '<tr>';
+                    echo '<td>' . $value->nom . '</td>';
+                    echo '<td>' . $value->url . '</td>';
+                    echo '<td>' . $value->taille . '</td>';
+                    echo '<td>' . $value->format . '</td>';
+                    echo '<td>' . $value->ext . '</td>';
+                    echo '<td>' . $value->projet_id . '</td>';
+                    echo '<td>' . form_checkbox() . '</td>';
+                    echo '</tr>';
+                }
+                echo '</th></table>';
+                ?>
+
+            </div>
+        </div>
     </main>
 
 
@@ -170,7 +225,7 @@ and open the template in the editor.
         });
 
 
-        $(".form_hidden").on('click', function () {
+        $("#projet").on('click', function () {
             var display_val = $(".new_projet").css('display');
             console.log(display_val);
             if (display_val === 'block') {
@@ -180,6 +235,26 @@ and open the template in the editor.
             }
 
         });
+        $("#ressource").on('click', function () {
+            var display_val = $(".new_ressources").css('display');
+            console.log(display_val);
+            if (display_val === 'block') {
+                $(".new_ressources").css('display', 'none');
+            } else {
+                $(".new_ressources").css('display', 'block');
+            }
+
+        });
+
+//        $('#ajax_ressources').on('click',function(){
+//            var id = $("[name='user_id']").attr('id');
+//            var createur = $("[name='user_name']").attr('id');
+//            var file=$("[name='file']").attr('value');
+//            
+//            
+//        });
+
+
         $('#ajax_projet').on('click', function () {
             var id = $("[name='user_id']").attr('id');
             var createur = $("[name='user_name']").attr('id');
