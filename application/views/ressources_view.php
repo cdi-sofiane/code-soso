@@ -65,51 +65,42 @@ and open the template in the editor.
         }
         .side{
 
-            /*display:flex;*/
+
+
             width: 100%;
-            flex-align: auto;
         }
         .material-icons {
             cursor: zoom-in;
 
         }
-        .block_side1{
-            padding-top: 300px;
-            height: 100px;
-            width: 100%;
-        }
-        .block_side0{
-            height: 100px;
-            width: 100%;
-        }
+
     </style>
     <side >
         <div class="side">
+            <div class="element_side1">
 
-            <div class="block_side1">
-                <div class="element_side1">
-
-                    <div data-nav-side="nav_bord"  class="form_hidden">Creer Ressources</div>
-                    <div class="new_projet" style="display:none">
+                <div data-nav-side="nav_bord"  class="form_hidden">Creer Ressources</div>
+                <div class="new_projet" style="display:none">
 
 
-                        <?php
-//                        echo form_input(array('type' => 'hidden', 'name' => 'user_id', 'id' => $is_logged->id));
-//                        echo form_input(array('type' => 'hidden', 'name' => 'user_name', 'id' => $is_logged->nom));
-//                        echo form_input(array('type' => 'hidden', 'name' => 'projet_name', 'id' => $is_logged->nom));
+                    <?php
+                    echo form_input(array('type' => 'hidden', 'name' => 'user_id', 'id' => $is_logged->id));
+                    echo form_input(array('type' => 'hidden', 'name' => 'user_name', 'id' => $is_logged->nom));
+                    echo form_input(array('type' => 'hidden', 'name' => 'projet_name', 'id' => $is_logged->nom));
 //                    echo form_input(array("placeholder" => 'Nom de Projet', 'name' => 'titre', 'value' => ''));
-                        echo form_input(array('name' => 'fichier', 'value' => '', 'type' => 'file'));
-                        echo form_submit(array('id' => 'ajax_ressource', 'class' => 'submit_btn', 'value' => 'New ressorce', 'type' => 'submit'));
-                        ?>
+                    echo form_input(array('name' => 'fichier', 'value' => '', 'type' => 'file'));
+                    echo form_submit(array('id' => 'ajax_ressource', 'class' => 'submit_btn', 'value' => 'New ressorce', 'type' => 'submit'));
+                    ?>
 
-                    </div>
                 </div>
-                <div class="element_side2">
-                    <div data-nav-side="nav_bord" >Supprimer Ressources</div>
-                </div>
+
+
             </div>
-            <div class="block_side2">
-                <a  href="<?php echo base_url() . 'accueil/bord' ?>">page de bord</a>
+            <div class="element_side2">
+
+                <div data-nav-side="nav_bord" >Supprimer Ressources</div>
+
+
             </div>
         </div>
     </side>
