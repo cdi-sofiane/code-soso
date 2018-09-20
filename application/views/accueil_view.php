@@ -130,7 +130,7 @@ and open the template in the editor.
                         echo form_input(array('type' => 'hidden', 'name' => 'user_id', 'id' => $is_logged->id));
                         echo form_input(array('type' => 'hidden', 'name' => 'user_name', 'id' => $is_logged->nom));
 
-                        echo form_input(array("placeholder" => 'Nom de la Ressource', 'name' => 'titre', 'value' => ''));
+//                        echo form_input(array("placeholder" => 'Nom de la Ressource', 'name' => 'titre', 'value' => ''));
                         echo form_input(array('name' => 'file_name', 'value' => '', 'type' => 'file'));
                         echo form_submit(array('id' => 'ajax_ressources', 'class' => 'submit_btn', 'value' => 'New ressources', 'type' => 'submit'));
                         echo form_close();
