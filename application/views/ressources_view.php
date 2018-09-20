@@ -6,6 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        <script src="../../assets/js/script_ajax.js"></script>
         <meta charset="UTF-8">
         <title></title>
     </head>

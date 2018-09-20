@@ -53,6 +53,7 @@ class Accueil extends CI_Controller {
         $projet->ajout_new_projet_par_createur();
 
         echo json_encode($projet->get_all_projet());
+        echo($_SESSION);
     }
 
     public function check_ressources() {

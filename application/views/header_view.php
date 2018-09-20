@@ -8,8 +8,9 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <link rel='shortcut icon' type='image/x-icon' href='upload/favicon.png' />
+        
         <link href="<?php echo base_url("./assets/css/bootstrap_1.css"); ?>"  rel="stylesheet"/>
-        <link href="<?php echo base_url("./assets/login.css"); ?>"  rel="stylesheet"/>
+        <link href="<?php echo base_url("./assets/base.css"); ?>"  rel="stylesheet"/>
 
         <title>REALIZ3D</title>
     </head>

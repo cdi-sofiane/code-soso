@@ -1,8 +1,10 @@
 
 <script src="../../assets/jquery/jquery.min.js"></script>
+
+<script src="../../assets/js/script_ajax.js"></script>
 <link rel='shortcut icon' type='image/x-icon' href='upload/favicon.png' />
 <link href="<?php echo base_url("./assets/css/bootstrap_1.css"); ?>"  rel="stylesheet"/>
-<link href="<?php echo base_url("./assets/login.css"); ?>"  rel="stylesheet"/>
+<link href="<?php echo base_url("./assets/base.css"); ?>"  rel="stylesheet"/>
 <style>
 
     .sidenav {
@@ -101,39 +103,7 @@
 
 </main>
 <script type="text/javascript">
-    $(".email").on('change', function () {
-        var val = $(this).val();
-        $.ajax({
-            type: 'POST',
-            url: "verification_mail",
-            data: {mail: val},
-            dataType: "json",
-            asynch: true,
-            success: function (data) {
-                var color = data;
-
-                $(".email").css('background-color', color);
-                console.log(color);
-                $(".email").on('change', function (color) {
-                    $(".email").css('background-color', color);
-                });
-            },
-            error: function (data) {
-
-            },
-        });
-
-    });
-    $("#pwd_2").on('keyup', function () {
-        var pdw_2 = $("#pwd_2").val();
-        var pwd_1 = $("#pwd_1").val();
-        if (pdw_2 === pwd_1) {
-            $('.password').css('background-color', 'green', );
-        } else {
-            $('.password').css('background-color', 'red');
-        }
-        console.log(pwd_1);
-    });
+  
 
 
 

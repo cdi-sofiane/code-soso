@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <script src="../../assets/jquery/jquery.min.js"></script>
-        <link href="<?php echo base_url("./assets/login.css"); ?>"  rel="stylesheet"/>
+        <link href="<?php echo base_url("./assets/base.css"); ?>"  rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <meta charset="UTF-8">
         <title>Tableau de bord</title>
@@ -30,7 +30,7 @@ and open the template in the editor.
                 background-color: #F0F8FF /*#333333*/;         }
             body{
                 display: flex;
-                overflow-y: scroll; 
+                /*overflow-y: scroll;*/ 
                 margin: 0;
                 padding: 0;
                 /* flex-wrap: wrap; */
@@ -130,7 +130,7 @@ and open the template in the editor.
                         echo form_input(array('type' => 'hidden', 'name' => 'user_id', 'id' => $is_logged->id));
                         echo form_input(array('type' => 'hidden', 'name' => 'user_name', 'id' => $is_logged->nom));
 
-                        echo form_input(array("placeholder" => 'Nom de la Ressource', 'name' => 'titre', 'value' => ''));
+//                        echo form_input(array("placeholder" => 'Nom de la Ressource', 'name' => 'titre', 'value' => ''));
                         echo form_input(array('name' => 'file_name', 'value' => '', 'type' => 'file'));
                         echo form_submit(array('id' => 'ajax_ressources', 'class' => 'submit_btn', 'value' => 'New ressources', 'type' => 'submit'));
                         echo form_close();
