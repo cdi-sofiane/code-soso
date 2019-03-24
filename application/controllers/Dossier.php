@@ -21,13 +21,12 @@ class Dossier extends CI_Controller {
     }
 
     public function projet_selectionner() {
-<<<<<<< HEAD
         $url = $_SERVER['PHP_SELF'];
         $id_projet = explode('/', $url)[4];
          $this->load->model('Ressources');
          $data['fichier']=$this->Ressources->find_all_file_in_project($id_projet);
         
-//        echo var_dump($folder);
+       echo var_dump($folder);
 //        exit;
         $this->load->view('ressources_view',$data);
     }
@@ -37,10 +36,6 @@ class Dossier extends CI_Controller {
         $id_ressources = $this->input->post('idressources');
         $id_projet = $this->input->post('id');
         $data['cool'] = $this->Ressources->association_dossier_fichier($id_ressources, $id_projet);
-=======
-//        redirect('../dossier','refresh');
-//        var_dump($_POST) . die();
->>>>>>> dev
     }
 
     //put your code here
