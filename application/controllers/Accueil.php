@@ -54,7 +54,6 @@ class Accueil extends CI_Controller {
     }
 
     public function check_ressources() {
-<<<<<<< HEAD
 
         $folder = $this->input->post('id_repertoir');
 
@@ -96,15 +95,6 @@ class Accueil extends CI_Controller {
         } else {
             redirect('accueil/bord');
         }
-=======
-        $folder=$this->input->post('id_repertoir');
-//        var_dump($folder).die();
-        $response['redirect'] = base_url() . 'dossier/projet_selectionner/'.$folder.'';
-        echo json_encode($response);
-//        die;
-//        var_dump($response).die();
-//        redirect('dossier/projet_selectionner');
->>>>>>> dev
     }
 
 }
