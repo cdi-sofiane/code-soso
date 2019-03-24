@@ -19,18 +19,15 @@ class Accueil extends CI_Controller {
         $this->load->helper(array('form', 'url', 'file', 'login'));
         $this->load->library('session');
         $this->load->model('Projet');
-        $this->load->model('Ressources');
     }
 
     public function bord() {
         $session = $this->session->is_logged;
+//     $_SESSION['is_logged']).die();
         check_login($session);
-        $this->load->model('Ressources');
         $data['is_logged'] = $this->session->is_logged[0];
         $data['projet'] = $this->load_projet();
-//       
-        $ressources = new Ressources();
-        $data['file'] = $ressources->get_ressources();
+//        var_dump($data);
         $this->load->view('accueil_view', $data);
     }
 
@@ -53,9 +50,11 @@ class Accueil extends CI_Controller {
         $projet->ajout_new_projet_par_createur();
 
         echo json_encode($projet->get_all_projet());
+        echo($_SESSION);
     }
 
     public function check_ressources() {
+<<<<<<< HEAD
 
         $folder = $this->input->post('id_repertoir');
 
@@ -97,6 +96,15 @@ class Accueil extends CI_Controller {
         } else {
             redirect('accueil/bord');
         }
+=======
+        $folder=$this->input->post('id_repertoir');
+//        var_dump($folder).die();
+        $response['redirect'] = base_url() . 'dossier/projet_selectionner/'.$folder.'';
+        echo json_encode($response);
+//        die;
+//        var_dump($response).die();
+//        redirect('dossier/projet_selectionner');
+>>>>>>> dev
     }
 
 }

@@ -11,7 +11,7 @@
  *
  * @author soso
  */
-class Ressources extends CI_Model {
+class Ressource extends CI_Model {
 
     private $idressources;
     public $projet_id;
@@ -22,7 +22,7 @@ class Ressources extends CI_Model {
     public $ext;
 
     public function __construct($url = '', $ext = '') {
-        parent::__construct();
+        parent::__construct($addr_mail, $password, $fk_id_utilisateur, $createur);
 
         $this->url = $url;
         $this->ext = $ext;
