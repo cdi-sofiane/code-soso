@@ -3,8 +3,8 @@
 
 <script src="../../assets/js/script_ajax.js"></script>
 <link rel='shortcut icon' type='image/x-icon' href='upload/favicon.png' />
-<link href="<?php echo base_url("./assets/css/bootstrap_1.css"); ?>"  rel="stylesheet"/>
-<link href="<?php echo base_url("./assets/base.css"); ?>"  rel="stylesheet"/>
+<link href="<?php echo base_url("/assets/css/bootstrap_1.css"); ?>"  rel="stylesheet"/>
+<link href="<?php echo base_url("/assets/base.css"); ?>"  rel="stylesheet"/>
 <style>
 
     /*    .sidenav {

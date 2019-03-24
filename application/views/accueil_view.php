@@ -31,16 +31,9 @@ and open the template in the editor.
                 background-color: #F0F8FF /*#333333*/;            }
             body{
                 display: flex;
-<<<<<<< HEAD
-                /*overflow-y: scroll;*/ 
-                margin: 0;
-                padding: 0;
-                /* flex-wrap: wrap; */
-=======
                 overflow: hidden;
                 margin:0;
                 padding:0;
->>>>>>> parent of 29c7ea2... maj ressources
 
                 /*flex-wrap: wrap;*/
 
@@ -109,15 +102,14 @@ and open the template in the editor.
             </div>
             <div class="element_side2">
 
-<<<<<<< HEAD
-//                        echo form_input(array("placeholder" => 'Nom de la Ressource', 'name' => 'titre', 'value' => ''));
+<?php
+                       echo form_input(array("placeholder" => 'Nom de la Ressource', 'name' => 'titre', 'value' => ''));
                         echo form_input(array('name' => 'file_name', 'value' => '', 'type' => 'file'));
                         echo form_submit(array('id' => 'ajax_ressources', 'class' => 'submit_btn', 'value' => 'New ressources', 'type' => 'submit'));
                         echo form_close();
                         ?>
-=======
+
                 <div data-nav-side="nav_bord" >Supprimer projet</div>
->>>>>>> parent of 29c7ea2... maj ressources
 
 
             </div>
